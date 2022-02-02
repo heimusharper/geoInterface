@@ -1,8 +1,9 @@
 #include "HeightSourceHGT1M.h"
 
 namespace geo {
-HeightSourceHGT1M::HeightSourceHGT1M(const std::filesystem::path &path) : HeightSourceInterface(),
-    m_path(path)
+HeightSourceHGT1M::HeightSourceHGT1M(const boost::filesystem::path& path)
+    : HeightSourceInterface()
+    , m_path(path)
 {
     GDALAllRegister();
 }
@@ -48,7 +49,7 @@ HeightSourceHGT1M::RasterObject *HeightSourceHGT1M::getRasterAt(const Coords3D &
             (coords.lat() < 0) ? "S" : "N", std::abs(lat),
             (coords.lon() < 0) ? "W" : "E", std::abs(lon));
 
-    std::filesystem::path local = m_path  / std::string(filename);
+    boost::filesystem::path local = m_path / std::string(filename);
     GDALDataset *ds = (GDALDataset *)GDALOpen(local.c_str(), GA_ReadOnly);
     RasterObject *ro = nullptr;
     if (ds == NULL)
