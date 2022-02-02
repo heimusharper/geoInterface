@@ -49,7 +49,7 @@ HeightSourceHGT1M::RasterObject *HeightSourceHGT1M::getRasterAt(const Coords3D &
             (coords.lat() < 0) ? "S" : "N", std::abs(lat),
             (coords.lon() < 0) ? "W" : "E", std::abs(lon));
 
-    boost::filesystem::path local = m_path / std::string(filename);
+    boost::filesystem::path local = m_path.append(std::string(filename));
     GDALDataset *ds = (GDALDataset *)GDALOpen(local.c_str(), GA_ReadOnly);
     RasterObject *ro = nullptr;
     if (ds == NULL)
