@@ -1,22 +1,21 @@
 #ifndef HEIGHTSOURCEHGT1M_H
 #define HEIGHTSOURCEHGT1M_H
 #include "HeightSourceInterface.h"
-#include <gdal/gdal_priv.h>
+#include <boost/filesystem/path.hpp>
 #include <gdal/cpl_conv.h>
-#include <filesystem>
+#include <gdal/gdal_priv.h>
 #include <list>
 
 namespace geo {
 class HeightSourceHGT1M : public HeightSourceInterface
 {
 public:
-    HeightSourceHGT1M(const std::filesystem::path &path);
+    HeightSourceHGT1M(const boost::filesystem::path& path);
     virtual bool heightAt(const Coords3D &coord, const int32_t nd, int32_t &out) override;
     virtual void cacheArea(const Coords3D &leftTop, const Coords3D &rightBottom) override;
 
 private:
-
-    std::filesystem::path m_path;
+    boost::filesystem::path m_path;
 
 private:
 
