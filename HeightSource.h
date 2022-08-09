@@ -1,8 +1,8 @@
 #ifndef HEIGHTSOURCE_H
 #define HEIGHTSOURCE_H
 #include "Coords3D.h"
-#include <gdal/gdal_priv.h>
-#include <gdal/cpl_conv.h>
+#include <gdal_priv.h>
+#include <cpl_conv.h>
 #include "HeightSourceInterface.h"
 #include <list>
 

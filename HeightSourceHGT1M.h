@@ -2,8 +2,8 @@
 #define HEIGHTSOURCEHGT1M_H
 #include "HeightSourceInterface.h"
 #include <boost/filesystem/path.hpp>
-#include <gdal/cpl_conv.h>
-#include <gdal/gdal_priv.h>
+#include <cpl_conv.h>
+#include <gdal_priv.h>
 #include <list>
 
 namespace geo {

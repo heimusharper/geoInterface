@@ -15,9 +15,9 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -fstrict-aliasing  -Wno-deprecated-declarations -Wno-unused-variable -Wno-volatile")
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-FIND_PACKAGE(Gdal)
-FIND_PACKAGE(Proj)
-FIND_PACKAGE(Boost)
+FIND_PACKAGE(Gdal REQUIRED)
+FIND_PACKAGE(Proj REQUIRED)
+FIND_PACKAGE(Boost REQUIRED)
 
 # add srcs
 SET(HEADERS_LIST

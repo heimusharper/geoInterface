@@ -1,6 +1,7 @@
 #ifndef HEIGHTSOURCEINTERFACE_H
 #define HEIGHTSOURCEINTERFACE_H
 #include "Coords3D.h"
+#include <cstdint>
 
 namespace geo {
 class HeightSourceInterface

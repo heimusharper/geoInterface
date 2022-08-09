@@ -3,10 +3,11 @@ FIND_PATH(Proj_LEGACY_INCLUDE_DIR
     NAMES
         proj_api.h
     PATHS
-        /usr/local/include/proj
         /usr/local/include
-        /usr/include/proj
         /usr/include
+		/include
+	PATH_SUFFIXES
+		proj
         )
 # new PROJ
 FIND_PATH(Proj_INCLUDE_DIR
@@ -14,39 +15,40 @@ FIND_PATH(Proj_INCLUDE_DIR
         proj.h
     PATHS
         /usr/local/include
-        /usr/include)
+        /usr/include
+		/include
+	PATH_SUFFIXES
+		proj
+		)
 
 # GEODESIC
 FIND_PATH(GEODESIC_INCLUDE_DIR
     NAMES
         geodesic.h
     PATHS
-        /usr/local/include/proj
         /usr/local/include
-        /usr/include/proj
         /usr/include
+		/include
+	PATH_SUFFIXES
+		proj
         )
 #library
-IF(WIN32)
-    FIND_LIBRARY(Proj_LIBRARY_DIR
-        NAMES
-            proj proj-15
-        PATHS
-            /bin
-        PATH_SUFFIXES lib
-    )
-ELSE()
-    FIND_LIBRARY(Proj_LIBRARY_DIR
-        NAMES
-            proj
-        PATHS
-            /lib
-            /usr/local/lib64
-            /usr/local/lib
-            /usr/lib
-        PATH_SUFFIXES lib
-    )
-ENDIF()
+
+FIND_LIBRARY(Proj_LIBRARY_DIR
+	NAMES
+		proj
+		proj-15
+		proj_9_0
+		libproj_9_0
+	PATHS
+		/lib
+		/usr/local/lib64
+		/usr/local/lib
+		/usr/lib
+		/bin
+	PATH_SUFFIXES 
+		lib
+)
 #legacy proj version check
 IF(Proj_LEGACY_INCLUDE_DIR)
     SET(Proj_INCLUDE_DIRS ${Proj_LEGACY_INCLUDE_DIR})

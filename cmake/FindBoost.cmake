@@ -2,22 +2,29 @@ FIND_PATH(Boost_INCLUDE_DIR
     NAMES
         circular_buffer.hpp
     PATHS
-        /usr/local/include/boost
         /usr/local/include
-        /usr/include/boost
         /usr/include
+		/include
+	PATH_SUFFIXES 
+		boost
+		boost/circular_buffer
         )
 
 MACRO ( FIND_Boost_LIBRARY MYLIBRARY MYLIBRARYNAME )
     FIND_LIBRARY(${MYLIBRARY}
         NAMES
             ${MYLIBRARYNAME}
+            ${MYLIBRARYNAME}-mt
+            lib${MYLIBRARYNAME}-mt
         PATHS
             /usr/lib/x86_64-linux-gnu
             /usr/local/lib64
             /usr/local/lib
             /usr/lib
-            /lib)
+            /lib
+			/bin
+	PATH_SUFFIXES lib
+			)
 ENDMACRO()
 
 FIND_Boost_LIBRARY(BOOST_CONTAINER_LIBRARY boost_container)
