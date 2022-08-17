@@ -3,6 +3,7 @@
 #include "HeightSourceInterface.h"
 #include <boost/filesystem/path.hpp>
 #include <cpl_conv.h>
+#include <fmt/format.h>
 #include <gdal_priv.h>
 #include <list>
 
@@ -50,6 +51,6 @@ private:
     RasterObject *getRasterAt(const Coords3D &coords);
 
 };
-}
+} // namespace geo
 
 #endif // HEIGHTSOURCEHGT1M_H

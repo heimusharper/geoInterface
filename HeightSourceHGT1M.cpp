@@ -44,12 +44,19 @@ HeightSourceHGT1M::RasterObject *HeightSourceHGT1M::getRasterAt(const Coords3D &
     }
     if (m_datasetList.find(addr) != m_datasetList.end())
         return m_datasetList.at(addr);
-    char filename[12];
-    sprintf(filename, "%s%02d%s%03d.hgt",
-            (coords.lat() < 0) ? "S" : "N", std::abs(lat),
-            (coords.lon() < 0) ? "W" : "E", std::abs(lon));
+    // char filename[12];
+    // sprintf(filename, "%s%02d%s%03d.hgt",
+    //        (coords.lat() < 0) ? "S" : "N", std::abs(lat),
+    //        (coords.lon() < 0) ? "W" : "E", std::abs(lon));
 
-    boost::filesystem::path local = m_path.append(std::string(filename));
+    // boost::filesystem::path local = m_path.append(std::string(filename));
+    boost::filesystem::path local = m_path.append(fmt::format("{}{1:0{2}}{}{1:0{5}}.hgt",
+                                                              (coords.lat() < 0) ? "S" : "N",
+                                                              std::abs(lat),
+                                                              3,
+                                                              (coords.lon() < 0) ? "W" : "E",
+                                                              std::abs(lon),
+                                                              4));
 #ifdef BOOST_WINDOWS_API
     GDALDataset *ds = (GDALDataset *)GDALOpen(local.string().c_str(), GA_ReadOnly);
 #else
